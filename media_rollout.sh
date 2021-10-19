@@ -42,6 +42,7 @@ docker-compose -f docker_files/docker-compose.yml stop
 ###################################
 #### config file configuraions ####
 ###################################
+
 if [ ! -e "${_API_DIR}/${_API_FILE}" ]
 then
     mkdir ${_API_DIR}
@@ -58,7 +59,6 @@ then
         -e "s/^api_key.*/api_key = ${_SAB_API}/g" \
         -e "s/^nzb_key.*/nzb_key = ${_SAB_NZB}/g" \
         ${_APPDATA}/sabnzbd/sabnzbd.ini
-    #### end sabnzbd config ####
 
     #### nzbhydra2 config ####
     _NZB_API=$(openssl rand -hex 13 \
@@ -79,7 +79,6 @@ then
     sed -i \
         -e "s/^  - apiKey:.*/  - apiKey: ${_SAB_API}/g" \
         ${_APPDATA}/nzbhydra2/nzbhydra.yml
-    #### end nzbhydra2 config ####
 
     ### lidarr, radarr, and sonarr configs ####
     _ARR_IN="lidarr:LDR
@@ -98,5 +97,4 @@ then
             "s/^  <ApiKey>.*/  <ApiKey>${_ITER_API}<\/ApiKey>/g" \
             ${_APPDATA}/${ITER%%:*}/config.xml
     done
-    #### end lidarr, radarr, and sonarr configs ####
 fi
