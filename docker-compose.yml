@@ -1,0 +1,134 @@
+version: "3.8"
+services:
+  radarr:
+    container_name: radarr
+    image: ghcr.io/hotio/radarr:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 4096M
+        reservations:
+          memory: 1024M
+    ports:
+      - 7878:7878
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media_rollout/appdata/radarr:/config
+      - /media_rollout/storage/movies:/movies
+      - /media_rollout/storage/downloads:/downloads
+
+  sonarr:
+    container_name: sonarr
+    image: ghcr.io/hotio/sonarr:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 4096M
+        reservations:
+          memory: 1024M
+    ports:
+      - 8989:8989
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media_rollout/appdata/sonarr:/config
+      - /media_rollout/storage/tv:/tv
+      - /media_rollout/storage/downloads:/downloads
+
+  lidarr:
+    container_name: lidarr
+    image: ghcr.io/hotio/lidarr:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 4096M
+        reservations:
+          memory: 1024M
+    ports:
+      - 8686:8686
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media_rollout/appdata/lidarr:/config
+      - /media_rollout/storage/music:/music
+      - /media_rollout/storage/downloads:/downloads
+
+  bazarr:
+    container_name: bazarr
+    image: ghcr.io/hotio/bazarr:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 4096M
+        reservations:
+          memory: 1024M
+    ports:
+      - 6767:6767
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media_rollout/appdata/bazarr:/config
+      - /media_rollout/storage/subs:/subs
+      - /media_rollout/storage/downloads:/downloads
+
+  nzbhydra2:
+    container_name: nzbhydra2
+    image: ghcr.io/hotio/nzbhydra2:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 8192M
+        reservations:
+          memory: 1024M
+    ports:
+      - 5076:5076
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media_rollout/appdata/nzbhydra2:/config
+
+  sabnzbd:
+    container_name: sabnzbd
+    image: ghcr.io/hotio/sabnzbd:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: 2
+          memory: 8192M
+        reservations:
+          memory: 1024M
+    ports:
+      - 8080:8080
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media_rollout/appdata/sabnzbd:/config
+      - /media_rollout/storage/downloads:/downloads:rw
+
+networks:
+  default:
+    name: media-rollout
