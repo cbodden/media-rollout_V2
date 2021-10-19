@@ -6,6 +6,42 @@ _APPDATA="/media_rollout/appdata"
 _CFG="config_samples"
 
 
+#########################################
+#### docker & docker compose install ####
+#########################################
+
+apt update -y
+
+apt install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    git-core \
+    software-properties-common \
+    yq \
+    -y
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+    | apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+curl -L --fail \
+    https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh \
+    -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+apt install docker-ce
+
+
+############################################
+#### initial docker-compose up and down ####
+############################################
+
+docker-compose -f docker_files/docker-compose.yml up -d
+docker-compose -f docker_files/docker-compose.yml stop
+
+
+###################################
+#### config file configuraions ####
+###################################
 if [ ! -e "${_API_DIR}/${_API_FILE}" ]
 then
     mkdir ${_API_DIR}
