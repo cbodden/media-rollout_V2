@@ -1,0 +1,12 @@
+  - apiKey:
+    defaultCategory: null
+    downloadType: "NZB"
+    enabled: true
+    iconCssClass: null
+    name: "SABnzbd"
+    nzbAddingType: "SEND_LINK"
+    downloaderType: "SABNZBD"
+    url: "http://0.0.0.0:8080/"
+    username: null
+    password: null
+    addPaused: false
