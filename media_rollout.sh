@@ -99,3 +99,10 @@ then
             ${_APPDATA}/${ITER%%:*}/config.xml
     done
 fi
+
+
+############################################
+#### restarting docker now with changes ####
+############################################
+
+docker-compose -f docker_files/docker-compose.yml up -d
