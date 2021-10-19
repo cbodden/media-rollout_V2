@@ -66,28 +66,6 @@ services:
       - /media_rollout/storage/music:/music
       - /media_rollout/storage/downloads:/downloads
 
-  bazarr:
-    container_name: bazarr
-    image: ghcr.io/hotio/bazarr:latest
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: 2
-          memory: 4096M
-        reservations:
-          memory: 1024M
-    ports:
-      - 6767:6767
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=UTC
-    volumes:
-      - /media_rollout/appdata/bazarr:/config
-      - /media_rollout/storage/subs:/subs
-      - /media_rollout/storage/downloads:/downloads
-
   nzbhydra2:
     container_name: nzbhydra2
     image: ghcr.io/hotio/nzbhydra2:latest
