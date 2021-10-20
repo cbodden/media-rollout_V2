@@ -1,0 +1,7 @@
+function pause()
+{
+    printf "%s\n" \
+        "${GRN}. . . .Press enter to continue. . . .${CLR}"
+
+    read -p "$*"
+}

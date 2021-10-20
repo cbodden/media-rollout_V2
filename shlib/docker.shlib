@@ -1,0 +1,21 @@
+function _docker()
+{
+    local _TAG=${1}
+
+    case "${_TAG}" in
+        init)
+            docker-compose -f docker_files/docker-compose.yml up -d
+            docker-compose -f docker_files/docker-compose.yml stop
+            ;;
+        start)
+            docker-compose -f docker_files/docker-compose.yml up -d
+            ;;
+        stop)
+            docker-compose -f docker_files/docker-compose.yml stop
+            ;;
+        *)
+            _usage >&2
+            exit 1
+            ;;
+    esac
+}
