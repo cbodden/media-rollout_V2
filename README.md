@@ -30,7 +30,7 @@ all containerized.
 ## Usage
 * Base Usage:
 ```
-Still being built. coming soon.
+Still being built. Coming soon.
 ```
 
 ## Usage Description
