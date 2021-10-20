@@ -17,9 +17,9 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /media_rollout/appdata/radarr:/config
-      - /media_rollout/storage/movies:/movies
-      - /media_rollout/storage/downloads:/downloads
+      - /media-rollout/appdata/radarr:/config
+      - /media-rollout/storage/movies:/movies
+      - /media-rollout/storage/downloads:/downloads
 
   sonarr:
     container_name: sonarr
@@ -38,9 +38,9 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /media_rollout/appdata/sonarr:/config
-      - /media_rollout/storage/tv:/tv
-      - /media_rollout/storage/downloads:/downloads
+      - /media-rollout/appdata/sonarr:/config
+      - /media-rollout/storage/tv:/tv
+      - /media-rollout/storage/downloads:/downloads
 
   lidarr:
     container_name: lidarr
@@ -59,9 +59,9 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /media_rollout/appdata/lidarr:/config
-      - /media_rollout/storage/music:/music
-      - /media_rollout/storage/downloads:/downloads
+      - /media-rollout/appdata/lidarr:/config
+      - /media-rollout/storage/music:/music
+      - /media-rollout/storage/downloads:/downloads
 
   nzbhydra2:
     container_name: nzbhydra2
@@ -80,7 +80,7 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /media_rollout/appdata/nzbhydra2:/config
+      - /media-rollout/appdata/nzbhydra2:/config
 
   sabnzbd:
     container_name: sabnzbd
@@ -99,8 +99,8 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /media_rollout/appdata/sabnzbd:/config
-      - /media_rollout/storage/downloads:/downloads:rw
+      - /media-rollout/appdata/sabnzbd:/config
+      - /media-rollout/storage/downloads:/downloads:rw
 
 networks:
   default:
