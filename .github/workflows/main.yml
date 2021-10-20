@@ -11,7 +11,7 @@ jobs:
         with:
           channel: "#media-rollout"
           server: "irc.libera.chat"
-          nickname: media-rollout-bot
+          nickname: mr-bot
           message: |
             ${{ github.actor }} pushed ${{ github.event.ref }} ${{ github.event.compare }}
             ${{ join(github.event.commits.*.message) }}
@@ -19,9 +19,9 @@ jobs:
         uses: rectalogic/notify-irc@v1
         if: github.event_name == 'pull_request'
         with:
-          channel: "#mychannel"
+          channel: "#media-rollout"
           server: "irc.libera.chat"
-          nickname: my-github-notifier
+          nickname: mr-bot
           message: |
             ${{ github.actor }} opened PR ${{ github.event.pull_request.html_url }}
       - name: irc tag created
@@ -30,6 +30,6 @@ jobs:
         with:
           channel: "#media-rollout"
           server: "irc.libera.chat"          
-          nickname: media-rollout-bot
+          nickname: mr-bot
           message: |
             ${{ github.actor }} tagged ${{ github.repository }} ${{ github.event.ref }}
