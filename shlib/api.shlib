@@ -29,7 +29,7 @@ function _api()
             ${_APPDATA}/nzbhydra2/nzbhydra.yml
 
         sed -i \
-            -e '/  downloaders: \[\]/r hydra_sab_section.txt' \
+            -e "/  downloaders: \[\]/r ${_CFG}/hydra_sab_section.txt" \
             -e 's/  downloaders: \[\]/  downloaders:/g' \
             ${_APPDATA}/nzbhydra2/nzbhydra.yml
 
