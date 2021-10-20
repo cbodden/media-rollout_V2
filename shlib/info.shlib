@@ -1,5 +1,10 @@
 function _info()
 {
+    readonly RED=$(tput setaf 1)
+    readonly BLU=$(tput setaf 4)
+    readonly GRN=$(tput setaf 40)
+    readonly CLR=$(tput sgr0)
+
     printf "%s\n" \
         "${GRN}${PROGNAME%.*}${CLR}" \
         "source can be found : $(git config --get remote.origin.url)" \
