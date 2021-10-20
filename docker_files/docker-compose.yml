@@ -100,7 +100,7 @@ services:
       - TZ=UTC
     volumes:
       - /media-rollout/appdata/sabnzbd:/config
-      - /media-rollout/storage/downloads:/downloads:rw
+      - /media-rollout/storage/downloads:/downloads
 
 networks:
   default:

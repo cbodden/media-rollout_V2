@@ -23,6 +23,6 @@ function main()
 
     _API_DIR=".config"
     _API_FILE="api_keys"
-    _APPDATA="/media_rollout/appdata"
+    _APPDATA="/media-rollout/appdata"
     _CFG="config_samples"
 }
