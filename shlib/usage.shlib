@@ -1,0 +1,28 @@
+function _usage()
+{
+    cat <<EOF
+NAME
+    ${PROGNAME}
+
+SYNOPSIS
+    ${PROGNAME} [OPTION] ...
+
+DESCRIPTION
+    This script is used to either deploy, configure, or remove the
+    media stack or bits and pieces.
+
+OPTIONS
+    -H, -h
+            Help
+            This option shows you this help message.
+
+    -I, -i
+            Install
+            This option starts the install process.
+
+    -G, -g
+            Git Info
+            This option will give you commit information on this project.
+
+EOF
+}
