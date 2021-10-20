@@ -2,7 +2,10 @@ function _api()
 {
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
-        mkdir ${_CFG_PATH}
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
 
         #### sabnzbd config ####
         local _SAB_API=$(openssl rand -hex 16)
