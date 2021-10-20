@@ -1,0 +1,21 @@
+  lidarr:
+    container_name: lidarr
+    image: linuxserver/lidarr
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+        reservations:
+          memory: 1024M
+    ports:
+      - 8686:8686
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media-rollout/appdata/lidarr:/config
+      - /media-rollout/storage/music:/music
+      - /media-rollout/storage/downloads:/downloads
+

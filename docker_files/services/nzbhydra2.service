@@ -1,0 +1,19 @@
+  nzbhydra2:
+    container_name: nzbhydra2
+    image: linuxserver/nzbhydra2
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8192M
+        reservations:
+          memory: 1024M
+    ports:
+      - 5076:5076
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media-rollout/appdata/nzbhydra2:/config
+

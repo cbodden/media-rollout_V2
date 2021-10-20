@@ -1,0 +1,21 @@
+  radarr:
+    container_name: radarr
+    image: linuxserver/radarr
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+        reservations:
+          memory: 1024M
+    ports:
+      - 7878:7878
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media-rollout/appdata/radarr:/config
+      - /media-rollout/storage/movies:/movies
+      - /media-rollout/storage/downloads:/downloads
+
