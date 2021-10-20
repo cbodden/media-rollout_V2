@@ -6,7 +6,7 @@ function _menu()
     case "${_MENU_TYPE}" in
         'configure')
             _docker down
-            rm -rf ${_API_DIR}
+            rm -rf ${_CFG_DIR}
             rm -rf /media_rollout/
             _docker init
             _docker stop
@@ -15,19 +15,18 @@ function _menu()
             ;;
          'remove')
             _docker down
-            rm -rf ${_API_DIR}
+            rm -rf ${_CFG_DIR}
             rm -rf /media_rollout/
             exit 0
             ;;
         'install')
             printf "%s\n" \
                 "This option will install the media stack." \
-                "" \
+                ""
 
             _pause
             _apt
-            _docker init
-            _docker stop
+            _docker_create darr
             _docker init
             _docker stop
             _api

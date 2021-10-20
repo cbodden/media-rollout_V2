@@ -4,17 +4,17 @@ function _docker()
 
     case "${_TAG}" in
         down)
-            docker-compose -f docker_files/docker-compose.yml down
+            docker-compose -f ${_CFG_PATH}/docker-compose.yml down
             ;;
         init)
-            docker-compose -f docker_files/docker-compose.yml up -d
-            docker-compose -f docker_files/docker-compose.yml stop
+            docker-compose -f ${_CFG_PATH}/docker-compose.yml up -d
+            docker-compose -f ${_CFG_PATH}/docker-compose.yml stop
             ;;
         start)
-            docker-compose -f docker_files/docker-compose.yml up -d
+            docker-compose -f ${_CFG_PATH}/docker-compose.yml up -d
             ;;
         stop)
-            docker-compose -f docker_files/docker-compose.yml stop
+            docker-compose -f ${_CFG_PATH}/docker-compose.yml stop
             ;;
         *)
             _usage >&2
