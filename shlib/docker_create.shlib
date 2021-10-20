@@ -1,0 +1,31 @@
+function _docker_create()
+{
+    local _TAG=${1}
+
+    case "${_TAG}" in
+        darr|DARR)
+            local _SVCS_DARR="header.service
+            sabnzbd.service
+            nzbhydra2.service
+            radarr.service
+            lidarr.service
+            sonarr.service
+            network.service"
+
+            if [ ! -d "${_CFG_PATH}/" ]
+            then
+                mkdir ${_CFG_PATH}
+
+                for ITER in ${_SVCS_DARR}
+                do
+                    cat ${_SVC_PATH}/${ITER} \
+                        >> ${_CFG_PATH}/docker-compose.yml
+                done
+            fi
+            ;;
+        *)
+            _usage >&2
+            exit 1
+            ;;
+    esac
+}

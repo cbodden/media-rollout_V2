@@ -19,10 +19,15 @@ function main()
         exit 1
     fi
 
-    trap 'echo "${NAME}: Ouch! Quitting." 1>&2 ; exit 1' 1 2 3 9 15
+    readonly NAME=$(basename $0)
+    readonly PROGNAME=$(basename $0)
+    readonly PROGDIR=$(readlink -m $(dirname $0))
+    readonly _API_DIR=".config"
+    readonly _API_FILE="api_keys"
+    readonly _APPDATA="/media-rollout/appdata"
+    readonly _CFG="config_samples"
+    readonly _SVC_PATH="${PROGDIR}/docker_files/services"
+    readonly _CFG_PATH="${PROGDIR}/.config"
 
-    _API_DIR=".config"
-    _API_FILE="api_keys"
-    _APPDATA="/media-rollout/appdata"
-    _CFG="config_samples"
+    trap 'echo "${NAME}: Ouch! Quitting." 1>&2 ; exit 1' 1 2 3 9 15
 }

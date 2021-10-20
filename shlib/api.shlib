@@ -1,16 +1,19 @@
 function _api()
 {
-    if [ ! -e "${_API_DIR}/${_API_FILE}" ]
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
-        mkdir ${_API_DIR}
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
 
         #### sabnzbd config ####
         local _SAB_API=$(openssl rand -hex 16)
         local _SAB_NZB=$(openssl rand -hex 16)
         cp ${_CFG}/sabnzbd.ini ${_APPDATA}/sabnzbd/
 
-        echo "_SAB_API = ${_SAB_API}" >> ${_API_DIR}/${_API_FILE}
-        echo "_SAB_NZB = ${_SAB_NZB}" >> ${_API_DIR}/${_API_FILE}
+        echo "_SAB_API = ${_SAB_API}" >> ${_CFG_PATH}/${_API_FILE}
+        echo "_SAB_NZB = ${_SAB_NZB}" >> ${_CFG_PATH}/${_API_FILE}
 
         sed -i \
             -e "s/^api_key.*/api_key = ${_SAB_API}/g" \
@@ -22,7 +25,7 @@ function _api()
             | tr a-f A-F)
         cp ${_CFG}/nzbhydra.yml ${_APPDATA}/nzbhydra2/nzbhydra.yml
 
-        echo "_NZB_API = ${_NZB_API}" >> ${_API_DIR}/${_API_FILE}
+        echo "_NZB_API = ${_NZB_API}" >> ${_CFG_PATH}/${_API_FILE}
 
         yq eval -i \
             ".main.apiKey = \"${_NZB_API}\"" \
@@ -48,7 +51,7 @@ function _api()
             local _ITER_API=$(openssl rand -hex 16)
             cp ${_CFG}/${ITER%%:*}_config.xml ${_APPDATA}/${ITER%%:*}/config.xml
 
-            echo "${_ITER_IN} = ${_ITER_API}" >> ${_API_DIR}/${_API_FILE}
+            echo "${_ITER_IN} = ${_ITER_API}" >> ${_CFG_PATH}/${_API_FILE}
 
             sed -i \
                 "s/^  <ApiKey>.*/  <ApiKey>${_ITER_API}<\/ApiKey>/g" \
