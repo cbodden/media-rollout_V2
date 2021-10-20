@@ -5,8 +5,8 @@ function _api()
         mkdir ${_API_DIR}
 
         #### sabnzbd config ####
-        _SAB_API=$(openssl rand -hex 16)
-        _SAB_NZB=$(openssl rand -hex 16)
+        local _SAB_API=$(openssl rand -hex 16)
+        local _SAB_NZB=$(openssl rand -hex 16)
         cp ${_CFG}/sabnzbd.ini ${_APPDATA}/sabnzbd/
 
         echo "_SAB_API = ${_SAB_API}" >> ${_API_DIR}/${_API_FILE}
@@ -18,7 +18,7 @@ function _api()
             ${_APPDATA}/sabnzbd/sabnzbd.ini
 
         #### nzbhydra2 config ####
-        _NZB_API=$(openssl rand -hex 13 \
+        local _NZB_API=$(openssl rand -hex 13 \
             | tr a-f A-F)
         cp ${_CFG}/nzbhydra.yml ${_APPDATA}/nzbhydra2/nzbhydra.yml
 
@@ -38,14 +38,14 @@ function _api()
             ${_APPDATA}/nzbhydra2/nzbhydra.yml
 
         ### lidarr, radarr, and sonarr configs ####
-        _ARR_IN="lidarr:LDR
+        local _ARR_IN="lidarr:LDR
         radarr:RDR
         sonarr:SNR"
 
         for ITER in ${_ARR_IN}
         do
-            _ITER_IN=_${ITER##*:}_API
-            _ITER_API=$(openssl rand -hex 16)
+            local _ITER_IN=_${ITER##*:}_API
+            local _ITER_API=$(openssl rand -hex 16)
             cp ${_CFG}/${ITER%%:*}_config.xml ${_APPDATA}/${ITER%%:*}/config.xml
 
             echo "${_ITER_IN} = ${_ITER_API}" >> ${_API_DIR}/${_API_FILE}

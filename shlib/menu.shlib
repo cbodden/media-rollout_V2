@@ -1,0 +1,28 @@
+function _menu()
+{
+    main
+    _MENU_TYPE=${1}
+
+    case "${_MENU_TYPE}" in
+        'configure')
+            exit 0
+            ;;
+         'remove')
+            exit 0
+            ;;
+        'install')
+            printf "%s\n" \
+                "This option will install either all or just bits of the media" \
+                "stack." \
+                "" \
+
+            _pause
+            _apt
+            _docker init
+            _docker stop
+            _api
+            _docker start
+            exit 0
+            ;;
+    esac
+}
