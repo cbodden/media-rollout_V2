@@ -1,0 +1,25 @@
+- name: Notify IRC
+  # You may pin to the exact commit or the version.
+  # uses: rectalogic/notify-irc@87377266635a9b7093c715a5ebb8a073b810cd9d
+  uses: rectalogic/notify-irc@v1
+  with:
+    # IRC server
+    server: irc.libera.chat
+    # IRC server port
+    port: 6697
+    # IRC server password
+    password: # optional
+    # IRC channel to message
+    channel: media-rollout
+    # IRC channel password
+    channel_key: # optional
+    # IRC user nickname
+    nickname: mr_bot 
+    # IRC user SASL password
+    sasl_password: # optional
+    # Message to send
+    message: posting commit messages
+    # Use NOTICE instead of PRIVMSG
+    notice: # optional
+    # Connect to server using TLS
+    tls: # optional, default is true
