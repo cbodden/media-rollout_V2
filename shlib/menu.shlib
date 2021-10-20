@@ -10,6 +10,7 @@ function _menu()
             rm -rf /media_rollout/
             _docker init
             _docker stop
+            _docker start
             exit 0
             ;;
          'remove')
