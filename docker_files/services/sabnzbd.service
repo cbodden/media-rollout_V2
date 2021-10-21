@@ -17,4 +17,5 @@
     volumes:
       - /media-rollout/appdata/sabnzbd:/config
       - /media-rollout/storage/downloads:/downloads
+      - /media-rollout/storage/incomplete-downloads:/incomplete-downloads
 
