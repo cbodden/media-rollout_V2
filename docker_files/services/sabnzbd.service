@@ -10,6 +10,7 @@
           memory: _MEM_RES
     ports:
       - 8080:8080
+      - 9090:9090
     environment:
       - PUID=1000
       - PGID=1000
