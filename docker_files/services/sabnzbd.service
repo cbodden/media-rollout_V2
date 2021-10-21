@@ -10,11 +10,13 @@
           memory: _MEM_RES
     ports:
       - 8080:8080
+      - 9090:9090
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=UTC
     volumes:
       - /media-rollout/appdata/sabnzbd:/config
-      - /media-rollout/storage/downloads:/downloads
+      - /media-rollout/storage/Downloads/complete:/Downloads/complete
+      - /media-rollout/storage/Downloads/incomplete:/Downloads/incomplete
 
