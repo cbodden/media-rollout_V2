@@ -5,9 +5,9 @@
     deploy:
       resources:
         limits:
-          memory: ${_MEM_LIM}
+          memory: _MEM_LIM
         reservations:
-          memory: ${_MEM_RES}
+          memory: _MEM_RES
     ports:
       - 8080:8080
     environment:
