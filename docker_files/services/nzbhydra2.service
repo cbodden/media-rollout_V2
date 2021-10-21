@@ -5,9 +5,9 @@
     deploy:
       resources:
         limits:
-          memory: 8192M
+          memory: _MEM_LIM
         reservations:
-          memory: 1024M
+          memory: _MEM_RES
     ports:
       - 5076:5076
     environment:

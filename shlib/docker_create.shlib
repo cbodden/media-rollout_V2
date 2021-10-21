@@ -22,6 +22,11 @@ function _docker_create()
                         >> ${_CFG_PATH}/docker-compose.yml
                 done
             fi
+
+            sed -i \
+                -e "s/_MEM_RES/${_MEM_RES}/g" \
+                -e "s/_MEM_LIM/${_MEM_LIM}/g" \
+                ${_CFG_PATH}/docker-compose.yml
             ;;
         *)
             _usage >&2
