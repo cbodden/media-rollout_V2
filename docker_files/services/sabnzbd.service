@@ -17,6 +17,6 @@
       - TZ=UTC
     volumes:
       - /media-rollout/appdata/sabnzbd:/config
-      - /media-rollout/storage/downloads:/downloads
-      - /media-rollout/storage/incomplete-downloads:/incomplete-downloads
+      - /media-rollout/storage/Downloads/complete:/Downloads/complete
+      - /media-rollout/storage/Downloads/incomplete:/Downloads/incomplete
 
