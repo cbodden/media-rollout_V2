@@ -30,6 +30,7 @@ function main()
     readonly _CFG_PATH="${PROGDIR}/.config"
     readonly _MEM_LIM="1024M"
     readonly _MEM_RES="512M"
+    readonly _YML_FILE="${PROGNAME}.yml"
 
     trap 'echo "${NAME}: Ouch! Quitting." 1>&2 ; exit 1' 1 2 3 9 15
 }
