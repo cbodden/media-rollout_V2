@@ -20,6 +20,11 @@ OPTIONS
             Install
             This option starts the install process.
 
+    -C, -c
+            Configure
+            This option will configure your existing setup.
+            (not the same as update the containers)
+
     -G, -g
             Git Info
             This option will give you commit information on this project.

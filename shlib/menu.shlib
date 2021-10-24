@@ -7,9 +7,7 @@ function _menu()
         'configure')
             _docker down
             rm -rf ${_CFG_DIR}
-            rm -rf /media_rollout/
-            _docker init
-            _docker stop
+            _api
             _docker start
             exit 0
             ;;

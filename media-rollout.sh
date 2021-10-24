@@ -13,9 +13,6 @@
 #       CREATED: 19-OCT-2021
 #===============================================================================
 
-readonly PROGNAME=$(basename $0)
-readonly PROGDIR=$(readlink -m $(dirname $0))
-
 ## source all the shlib's
 for ITER in shlib/*.shlib
 do
