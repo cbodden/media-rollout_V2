@@ -1,0 +1,25 @@
+  ubooquity:
+    container_name: ubooquity
+    image: linuxserver/ubooquity
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: _MEM_LIM
+        reservations:
+          memory: _MEM_RES
+    ports:
+      - 2202:2202
+      - 2203:2203
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - MAXMEM=1024
+    volumes:
+      - /media-rollout/appdata/ubooquity:/config
+      - /media-rollout/storage/books/_Books:/books
+      - /media-rollout/storage/books/_Comics:/comics
+      - /media-rollout/storage/books/_Magazines:/magazines
+      - /media-rollout/storage/Downloads/complete:/downloads
+
