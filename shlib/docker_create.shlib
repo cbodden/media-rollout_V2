@@ -11,7 +11,7 @@ function _docker_create()
             lidarr.service
             sonarr.service
             lazylibrarian.service
-            uboouity.service
+            ubooquity.service
             network.service"
 
             if [ ! -d "${_CFG_PATH}/" ]
