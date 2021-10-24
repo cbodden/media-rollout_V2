@@ -1,0 +1,20 @@
+  plex:
+    container_name: plex
+    image: linuxserver/plex
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8192M
+        reservations:
+          memory: 4096M
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+    volumes:
+      - /media-rollout/appdata/plex:/config
+      - /media-rollout/storage/movies:/movies
+      - /media-rollout/storage/tv:/tv
+      - /media-rollout/storage/books/_AudioBooks:/audiobooks
+
