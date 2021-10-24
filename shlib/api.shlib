@@ -1,13 +1,18 @@
 function _api()
 {
+    local _API_TYPE=${1}
+
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
         then
             mkdir ${_CFG_PATH}
         fi
+    fi
 
-        #### sabnzbd config ####
+    #### sabnzbd config ####
+    if [ ! -e "${_APPDATA}/sabnzbd/sabnzbd.ini" ]
+    then
         local _SAB_API=$(openssl rand -hex 16)
         local _SAB_NZB=$(openssl rand -hex 16)
         cp ${_CFG}/sabnzbd.ini ${_APPDATA}/sabnzbd/
@@ -19,8 +24,12 @@ function _api()
             -e "s/^api_key.*/api_key = ${_SAB_API}/g" \
             -e "s/^nzb_key.*/nzb_key = ${_SAB_NZB}/g" \
             ${_APPDATA}/sabnzbd/sabnzbd.ini
+    fi
 
-        #### nzbhydra2 config ####
+
+    #### nzbhydra2 config ####
+    if [ ! -e "${_APPDATA}/nzbhydra2/nzbhydra.yml" ]
+    then
         local _NZB_API=$(openssl rand -hex 13 \
             | tr a-f A-F)
         cp ${_CFG}/nzbhydra.yml ${_APPDATA}/nzbhydra2/nzbhydra.yml
@@ -39,14 +48,18 @@ function _api()
         sed -i \
             -e "s/^  - apiKey:.*/  - apiKey: ${_SAB_API}/g" \
             ${_APPDATA}/nzbhydra2/nzbhydra.yml
+    fi
 
-        ### lidarr, radarr, and sonarr configs ####
-        local _ARR_IN="lidarr:LDR
-        radarr:RDR
-        sonarr:SNR"
 
-        for ITER in ${_ARR_IN}
-        do
+    ### lidarr, radarr, and sonarr configs ####
+    local _ARR_IN="lidarr:LDR
+    radarr:RDR
+    sonarr:SNR"
+
+    for ITER in ${_ARR_IN}
+    do
+        if [ ! -e "${_APPDATA}/${ITER%%:*}/config.xml" ]
+        then
             local _ITER_IN=_${ITER##*:}_API
             local _ITER_API=$(openssl rand -hex 16)
             cp ${_CFG}/${ITER%%:*}_config.xml ${_APPDATA}/${ITER%%:*}/config.xml
@@ -56,9 +69,13 @@ function _api()
             sed -i \
                 "s/^  <ApiKey>.*/  <ApiKey>${_ITER_API}<\/ApiKey>/g" \
                 ${_APPDATA}/${ITER%%:*}/config.xml
-        done
+        fi
+    done
 
-        #### lazylibrarian configs ####
+
+    #### lazylibrarian configs ####
+    if [ ! -e "${_APPDATA}/lazylibrarian/config.ini" ]
+    then
         local _LZL_API=$(openssl rand -hex 16)
         cp ${_CFG}/lazylibrarian.ini ${_APPDATA}/lazylibrarian/config.ini
 
