@@ -1,0 +1,21 @@
+  lazylibrarian:
+    container_name: lazylibrarian
+    image: linuxserver/lazylibrarian
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: _MEM_LIM
+        reservations:
+          memory: _MEM_RES
+    ports:
+      - 5299:5299
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /media-rollout/appdata/lazylibrarian:/config
+      - /media-rollout/storage/books:/books
+      - /media-rollout/storage/Downloads/complete:/downloads
+
