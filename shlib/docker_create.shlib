@@ -19,13 +19,13 @@ function _docker_create()
             if [ ! -d "${_CFG_PATH}/" ]
             then
                 mkdir ${_CFG_PATH}
-
-                for ITER in ${_SVCS_DARR}
-                do
-                    cat ${_SVC_PATH}/${ITER} \
-                        >> ${_CFG_PATH}/${_YML_FILE}
-                done
             fi
+
+            for ITER in ${_SVCS_DARR}
+            do
+                cat ${_SVC_PATH}/${ITER} \
+                    >> ${_CFG_PATH}/${_YML_FILE}
+            done
 
             sed -i \
                 -e "s/_MEM_RES/${_MEM_RES}/g" \

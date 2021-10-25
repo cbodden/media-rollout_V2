@@ -6,14 +6,15 @@ function _menu()
     case "${_MENU_TYPE}" in
         'configure')
             _docker down
-            rm -rf ${_CFG_DIR}
+            rm ${_CFG_PATH}/${_YML_FILE}
             _api
+            _docker_create darr
             _docker start
             exit 0
             ;;
          'remove')
             _docker down
-            rm -rf ${_CFG_DIR}
+            rm -rf ${_CFG_PATH}/
             rm -rf /media_rollout/
             exit 0
             ;;
