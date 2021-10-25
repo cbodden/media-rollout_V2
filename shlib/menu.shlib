@@ -6,7 +6,7 @@ function _menu()
     case "${_MENU_TYPE}" in
         'configure')
             _docker down
-            rm -rf ${_CFG_DIR}
+            rm ${_CFG_DIR}/${_YML_FILE}
             _api
             _docker start
             exit 0
