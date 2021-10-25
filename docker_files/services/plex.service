@@ -5,6 +5,7 @@
     deploy:
       resources:
         limits:
+          cpus: '2.00'
           memory: 8192M
         reservations:
           memory: 4096M
