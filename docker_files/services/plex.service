@@ -14,10 +14,10 @@
       - PUID=1000
       - PGID=1000
       - VERSION=docker
-      - PLEX_CLAIM=claim-345_Hq3Jro7A9sTLHshV
     volumes:
       - /media-rollout/appdata/plex:/config
       - /media-rollout/storage/movies:/movies
+      - /media-rollout/storage/music:/music
       - /media-rollout/storage/tv:/tv
       - /media-rollout/storage/books/_AudioBooks:/audiobooks
 
