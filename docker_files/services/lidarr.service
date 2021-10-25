@@ -17,5 +17,5 @@
     volumes:
       - /media-rollout/appdata/lidarr:/config
       - /media-rollout/storage/music:/music
-      - /media-rollout/storage/Downloads/complete:/downloads
+      - /media-rollout/storage/Downloads/complete/audio:/downloads
 
