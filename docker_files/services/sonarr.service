@@ -17,5 +17,5 @@
     volumes:
       - /media-rollout/appdata/sonarr:/config
       - /media-rollout/storage/tv:/tv
-      - /media-rollout/storage/Downloads/complete/tv:/downloads
+      - /media-rollout/storage/Downloads/complete/tv:/Downloads/complete/tv
 
