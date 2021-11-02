@@ -22,11 +22,14 @@ done
 clear
 
 ## option selection
-while getopts "CcDdRrGgHhIi" OPT
+while getopts "CcUuDdRrGgIiHh" OPT
 do
     case "${OPT}" in
         [Cc])
             _menu configure
+            ;;
+        [Uu])
+            _menu update
             ;;
         [Dd]|[Rr])
             _menu remove

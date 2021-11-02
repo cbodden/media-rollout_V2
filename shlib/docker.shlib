@@ -3,17 +3,27 @@ function _docker()
     local _TAG=${1}
 
     case "${_TAG}" in
-        down)
+        'down')
             docker-compose -f ${_CFG_PATH}/${_YML_FILE} down
             ;;
-        init)
+        'init')
             docker-compose -f ${_CFG_PATH}/${_YML_FILE} up -d
             docker-compose -f ${_CFG_PATH}/${_YML_FILE} stop
             ;;
-        start)
+        'pull')
+            docker-compose -f ${_CFG_PATH}/${_YML_FILE} down
+            docker-compose -f ${_CFG_PATH}/${_YML_FILE} pull
+            docker-compose \
+                -f ${_CFG_PATH}/${_YML_FILE} \
+                up \
+                --force-recreate \
+                --build \
+                -d
+            ;;
+        'start')
             docker-compose -f ${_CFG_PATH}/${_YML_FILE} up -d
             ;;
-        stop)
+        'stop')
             docker-compose -f ${_CFG_PATH}/${_YML_FILE} stop
             ;;
         *)
