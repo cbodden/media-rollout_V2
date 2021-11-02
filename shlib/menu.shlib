@@ -12,7 +12,10 @@ function _menu()
             _docker start
             exit 0
             ;;
-         'remove')
+        'update')
+            _docker pull
+            ;;
+        'remove')
             _docker down
             rm -rf ${_CFG_PATH}/
             rm -rf /media_rollout/

@@ -25,6 +25,11 @@ OPTIONS
             This option will configure your existing setup.
             (not the same as update the containers)
 
+    -U, -u
+            Update
+            This option will remove existing containers, pull new ones, then
+            recreate them without wiping configs.
+
     -G, -g
             Git Info
             This option will give you commit information on this project.
