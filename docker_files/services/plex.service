@@ -5,10 +5,10 @@
     deploy:
       resources:
         limits:
-          cpus: '2.00'
-          memory: 8192M
+          cpus: "${CPU_MED}"
+          memory: "${MEM_HIGH}"
         reservations:
-          memory: 4096M
+          memory: "${MEM_RES}"
     ports:
       - 32400:32400
     environment:
