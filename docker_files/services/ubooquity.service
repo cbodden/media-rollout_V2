@@ -5,9 +5,10 @@
     deploy:
       resources:
         limits:
-          memory: _MEM_LIM
+          cpus: "${CPU_LOW}"
+          memory: "${MEM_LOW}"
         reservations:
-          memory: _MEM_RES
+          memory: "${MEM_RES}"
     ports:
       - 2202:2202
       - 2203:2203

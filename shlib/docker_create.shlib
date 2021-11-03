@@ -27,10 +27,7 @@ function _docker_create()
                     >> ${_CFG_PATH}/${_YML_FILE}
             done
 
-            sed -i \
-                -e "s/_MEM_RES/${_MEM_RES}/g" \
-                -e "s/_MEM_LIM/${_MEM_LIM}/g" \
-                ${_CFG_PATH}/${_YML_FILE}
+            cat ${_DKR_PATH}/.env > ${_CFG_PATH}/.env
             ;;
         *)
             _usage >&2
