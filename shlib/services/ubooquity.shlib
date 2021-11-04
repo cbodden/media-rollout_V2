@@ -1,0 +1,16 @@
+function _ubooquity_create()
+{
+    local _API_TYPE=${1}
+
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+
+    cat ${_SVC_PATH}/ubooquity.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+
+}

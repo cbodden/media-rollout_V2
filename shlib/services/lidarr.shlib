@@ -1,0 +1,28 @@
+function _lidarr_create()
+{
+    local _API_TYPE=${1}
+
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+
+    if [ ! -e "${_APPDATA}/lidarr/config.xml" ]
+    then
+        local _LDR_API=$(openssl rand -hex 16)
+        cp ${_CFG}/lidarr_config.xml ${_APPDATA}/lidarr/config.xml
+
+        echo "_LDR_API = ${_LDR_API}" >> ${_CFG_PATH}/${_API_FILE}
+
+        sed -i \
+            "s/^  <ApiKey>.*/  <ApiKey>${_LDR_API}<\/ApiKey>/g" \
+            ${_APPDATA}/lidarr/config.xml
+    fi
+
+    cat ${_SVC_PATH}/lidarr.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+
+}

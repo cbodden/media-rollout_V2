@@ -1,0 +1,30 @@
+function _lazylibrarian_create()
+{
+    local _API_TYPE=${1}
+
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+
+    if [ ! -e "${_APPDATA}/lazylibrarian/config.ini" ]
+    then
+        local _LZL_API=$(openssl rand -hex 16)
+        cp ${_CFG}/lazylibrarian.ini ${_APPDATA}/lazylibrarian/config.ini
+
+        echo "_LZL_API = ${_LZL_API}" >> ${_CFG_PATH}/${_API_FILE}
+
+        sed -i \
+            -e "s/api_key = _LZL_API/api_key = ${_LZL_API}/g" \
+            -e "s/api = _NZB_API/api = ${_NZB_API}/g" \
+            -e "s/sab_api = _SAB_API/sab_api = ${_SAB_API}/g" \
+            ${_APPDATA}/lazylibrarian/config.ini
+    fi
+
+    cat ${_SVC_PATH}/lazylibrarian.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+
+}
