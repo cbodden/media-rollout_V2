@@ -73,13 +73,13 @@ OPTIONS
 
 
 ## Planned services supported (this list will grow) :
-* Sabnzbd
-* NZBHydra2
-* Lidarr
-* Sonarr
-* Radarr
-* Plex Media Server
-* Tautulli
+* [Sabnzbd](https://sabnzbd.org/ sabnzbd homepage)
+* [NZBHydra2](https://github.com/theotherp/nzbhydra2 NZBHydra2 homepage)
+* [Lidarr](https://lidarr.audio/ Lidarr homepage)
+* [Sonarr](https://sonarr.tv/ Sonarr homepage)
+* [Radarr](https://radarr.video/ Radarr homepage)
+* [Plex Media Server](https://www.plex.tv/ Plex homepage)
+* [Tautulli](https://tautulli.com/ Tautulli homepage)
 
 ## Community
 * <a name="libera"><img src="https://img.shields.io/badge/style-join%20chat-blue.svg?style=flat.svg&label=libera"></a>&nbsp;(`libera.chat` channel `#media-rollout`)
