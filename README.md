@@ -30,12 +30,42 @@ all containerized.
 ## Usage
 * Base Usage:
 ```
-Still being built. Coming soon.
+git clone https://gthub.com/cbodden/media-rollout_v2.git
+cd media-rollout_v2
+sudo ./media-rollout.sh
+
 ```
 
 ## Usage Description
 ```
-Still being built. coming soon.
+DESCRIPTION
+    This script is used to either deploy, configure, or remove the
+    media stack or bits and pieces.
+
+OPTIONS
+    -H, -h
+            Help
+            This option shows you this help message.
+
+    -I, -i
+            Install
+            This option starts the install process.
+
+    -C, -c
+            Configure
+            This option will configure your existing setup.
+            (not the same as update the containers)
+
+    -U, -u
+            Update
+            This option will remove existing containers, pull new ones, then
+            recreate them without wiping configs.
+
+    -G, -g
+            Git Info
+            This option will give you commit information on this project.
+
+
 ```
 
 * This script was tested and built on a fresh build of:
@@ -44,10 +74,12 @@ Still being built. coming soon.
 
 ## Planned services supported (this list will grow) :
 * Sabnzbd
+* NZBHydra2
 * Lidarr
 * Sonarr
 * Radarr
-* NZBHydra2
+* Plex Media Server
+* Tautulli
 
 ## Community
 * <a name="libera"><img src="https://img.shields.io/badge/style-join%20chat-blue.svg?style=flat.svg&label=libera"></a>&nbsp;(`libera.chat` channel `#media-rollout`)
