@@ -1,0 +1,45 @@
+function _nzbhydra2()
+{
+    local _CALL_TYPE=${1}
+
+    _nzbhydra2 ${_CALL_TYPE}
+}
+
+function _nzbhydra2_api()
+{
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+
+    if [ ! -e "${_APPDATA}/nzbhydra2/nzbhydra.yml" ]
+    then
+        local _NZB_API=$(openssl rand -hex 13 \
+            | tr a-f A-F)
+        cp ${_CFG}/nzbhydra.yml ${_APPDATA}/nzbhydra2/nzbhydra.yml
+
+        echo "_NZB_API = ${_NZB_API}" >> ${_CFG_PATH}/${_API_FILE}
+
+        yq eval -i \
+            ".main.apiKey = \"${_NZB_API}\"" \
+            ${_APPDATA}/nzbhydra2/nzbhydra.yml
+
+        sed -i \
+            -e "/  downloaders: \[\]/r ${_CFG}/hydra_sab_section.txt" \
+            -e 's/  downloaders: \[\]/  downloaders:/g' \
+            ${_APPDATA}/nzbhydra2/nzbhydra.yml
+
+        sed -i \
+            -e "s/^  - apiKey:.*/  - apiKey: ${_SAB_API}/g" \
+            ${_APPDATA}/nzbhydra2/nzbhydra.yml
+    fi
+}
+
+function _nzbhydra2_service()
+{
+    cat ${_SVC_PATH}/nzbhydra2.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+}

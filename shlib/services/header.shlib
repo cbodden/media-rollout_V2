@@ -1,0 +1,20 @@
+function _header()
+{
+    local _CALL_TYPE=${1}
+
+    _header ${_CALL_TYPE}
+}
+
+function _header_service()
+{
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+
+    cat ${_SVC_PATH}/header.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+}

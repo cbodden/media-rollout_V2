@@ -1,0 +1,38 @@
+function _sabnzbd()
+{
+    local _CALL_TYPE=${1}
+
+    _sabnzbd ${_CALL_TYPE}
+}
+
+function _sabnzbd_api()
+{
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+
+    if [ ! -e "${_APPDATA}/sabnzbd/sabnzbd.ini" ]
+    then
+        local _SAB_API=$(openssl rand -hex 16)
+        local _SAB_NZB=$(openssl rand -hex 16)
+        cp ${_CFG}/sabnzbd.ini ${_APPDATA}/sabnzbd/
+
+        echo "_SAB_API = ${_SAB_API}" >> ${_CFG_PATH}/${_API_FILE}
+        echo "_SAB_NZB = ${_SAB_NZB}" >> ${_CFG_PATH}/${_API_FILE}
+
+        sed -i \
+            -e "s/^api_key.*/api_key = ${_SAB_API}/g" \
+            -e "s/^nzb_key.*/nzb_key = ${_SAB_NZB}/g" \
+            ${_APPDATA}/sabnzbd/sabnzbd.ini
+    fi
+}
+
+function _sabnzbd_service()
+{
+    cat ${_SVC_PATH}/sabnzbd.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+}

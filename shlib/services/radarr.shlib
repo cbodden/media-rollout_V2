@@ -1,0 +1,35 @@
+function _radarr()
+{
+    local _CALL_TYPE=${1}
+
+    _radarr ${_CALL_TYPE}
+}
+
+function _radarr_api()
+{
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+
+    if [ ! -e "${_APPDATA}/radarr/config.xml" ]
+    then
+        local _RDR_API=$(openssl rand -hex 16)
+        cp ${_CFG}/radarr_config.xml ${_APPDATA}/radarr/config.xml
+
+        echo "_RDR_API = ${_RDR_API}" >> ${_CFG_PATH}/${_API_FILE}
+
+        sed -i \
+            "s/^  <ApiKey>.*/  <ApiKey>${_RDR_API}<\/ApiKey>/g" \
+            ${_APPDATA}/radarr/config.xml
+    fi
+}
+
+function _radarr_service()
+{
+    cat ${_SVC_PATH}/radarr.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+}

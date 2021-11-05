@@ -1,0 +1,23 @@
+function _ubooquity()
+{
+    local _CALL_TYPE=${1}
+
+    _ubooquity ${_CALL_TYPE}
+}
+
+function _ubooquity_api()
+{
+    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
+    then
+        if [ ! -d "${_CFG_PATH}/" ]
+        then
+            mkdir ${_CFG_PATH}
+        fi
+    fi
+}
+
+function _ubooquity_service()
+{
+    cat ${_SVC_PATH}/ubooquity.service \
+        >> ${_CFG_PATH}/${_YML_FILE}
+}

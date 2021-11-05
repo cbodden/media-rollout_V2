@@ -28,10 +28,26 @@ function _menu()
 
             _pause
             _apt
-            _docker_create darr
+            _header_service
+            _sabnzbd_service
+            _nzbhydra2_service
+            _radarr_service
+            _lidarr_service
+            _sonarr_service
+            _lazylibrarian_service
+            _ubooquity_service
+            _plex_service
+            _tautulli_service
+            _network_service
+            cat ${_DKR_PATH}/.env > ${_CFG_PATH}/.env
             _docker init
             _docker stop
-            _api
+            _sabnzbd_api
+            _nzbhydra2_api
+            _radarr_api
+            _lidarr_api
+            _sonarr_api
+            _lazylibrarian_api
             _docker start
             exit 0
             ;;
