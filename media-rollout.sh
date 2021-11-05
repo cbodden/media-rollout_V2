@@ -14,7 +14,7 @@
 #===============================================================================
 
 ## source all the shlib's
-for ITER in shlib/*.shlib
+for ITER in shlib/core/*.shlib
 do
     source ${ITER}
 done
