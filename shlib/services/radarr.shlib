@@ -1,7 +1,12 @@
-function _radarr_create()
+function _radarr()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _radarr ${_CALL_TYPE}
+}
+
+function _radarr_api()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -21,8 +26,10 @@ function _radarr_create()
             "s/^  <ApiKey>.*/  <ApiKey>${_RDR_API}<\/ApiKey>/g" \
             ${_APPDATA}/radarr/config.xml
     fi
+}
 
+function _radarr_service()
+{
     cat ${_SVC_PATH}/radarr.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }

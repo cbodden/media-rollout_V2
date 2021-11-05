@@ -1,7 +1,12 @@
-function _lidarr_create()
+function _lidarr()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _lidarr ${_CALL_TYPE}
+}
+
+function _lidarr_api()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -21,8 +26,10 @@ function _lidarr_create()
             "s/^  <ApiKey>.*/  <ApiKey>${_LDR_API}<\/ApiKey>/g" \
             ${_APPDATA}/lidarr/config.xml
     fi
+}
 
+function _lidarr_service()
+{
     cat ${_SVC_PATH}/lidarr.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }

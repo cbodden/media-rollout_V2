@@ -28,22 +28,26 @@ function _menu()
 
             _pause
             _apt
-            _docker_create darr
-            ## _header_create
-            ## _sabnzbd_create
-            ## _nzbhydra2_create
-            ## _radarr_create
-            ## _lidarr_create
-            ## _sonarr_create
-            ## _lazylibrarian_create
-            ## _ubooquity_create
-            ## _plex_create
-            ## _tautulli_create
-            ## _network.service"
+            _header service
+            _sabnzbd service
+            _nzbhydra2 service
+            _radarr service
+            _lidarr service
+            _sonarr service
+            _lazylibrarian service
+            _ubooquity service
+            _plex service
+            _tautulli service
+            _network service
+            cat ${_DKR_PATH}/.env > ${_CFG_PATH}/.env
             _docker init
             _docker stop
-            _api
-            ## api gets removed when fnction creates get added
+            _sabnzbd api
+            _nzbhydra2 api
+            _radarr api
+            _lidarr api
+            _sonarr api
+            _lazylibrarian api
             _docker start
             exit 0
             ;;

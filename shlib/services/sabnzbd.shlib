@@ -1,7 +1,12 @@
-function _sabnzbd_create()
+function _sabnzbd()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _sabnzbd ${_CALL_TYPE}
+}
+
+function _sabnzbd_api()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -24,9 +29,10 @@ function _sabnzbd_create()
             -e "s/^nzb_key.*/nzb_key = ${_SAB_NZB}/g" \
             ${_APPDATA}/sabnzbd/sabnzbd.ini
     fi
+}
 
+function _sabnzbd_service()
+{
     cat ${_SVC_PATH}/sabnzbd.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
-    cat ${_DKR_PATH}/.env > ${_CFG_PATH}/.env
 }

@@ -1,16 +1,12 @@
-function _network_create()
+function _network()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
-    if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
-    then
-        if [ ! -d "${_CFG_PATH}/" ]
-        then
-            mkdir ${_CFG_PATH}
-        fi
-    fi
+    _network ${_CALL_TYPE}
+}
 
+function _network_service()
+{
     cat ${_SVC_PATH}/network.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }

@@ -1,7 +1,12 @@
-function _lazylibrarian_create()
+function _lazylibrarian()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _lazylibrarian_${_CALL_TYPE}
+}
+
+function _lazylibrarian_api()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -23,8 +28,10 @@ function _lazylibrarian_create()
             -e "s/sab_api = _SAB_API/sab_api = ${_SAB_API}/g" \
             ${_APPDATA}/lazylibrarian/config.ini
     fi
+}
 
+function _lazylibrarian_service()
+{
     cat ${_SVC_PATH}/lazylibrarian.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }

@@ -1,7 +1,12 @@
-function _sonarr_create()
+function _sonarr()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _sonarr ${_CALL_TYPE}
+}
+
+function _sonarr_api()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -21,8 +26,10 @@ function _sonarr_create()
             "s/^  <ApiKey>.*/  <ApiKey>${_SNR_API}<\/ApiKey>/g" \
             ${_APPDATA}/sonarr/config.xml
     fi
+}
 
+function _sonarr_service()
+{
     cat ${_SVC_PATH}/sonarr.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }

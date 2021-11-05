@@ -1,7 +1,12 @@
-function _header_create()
+function _header()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _header ${_CALL_TYPE}
+}
+
+function _header_service()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -12,5 +17,4 @@ function _header_create()
 
     cat ${_SVC_PATH}/header.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }

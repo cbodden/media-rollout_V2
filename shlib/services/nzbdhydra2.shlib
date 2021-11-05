@@ -1,7 +1,12 @@
-function _nzbdhydra2_create()
+function _nzbdhydra2()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _nzbhydra2 ${_CALL_TYPE}
+}
+
+function _nzbdhydra2_api()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -31,8 +36,10 @@ function _nzbdhydra2_create()
             -e "s/^  - apiKey:.*/  - apiKey: ${_SAB_API}/g" \
             ${_APPDATA}/nzbhydra2/nzbhydra.yml
     fi
+}
 
+function _nzbdhydra2_service()
+{
     cat ${_SVC_PATH}/nzbdhydra2.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }

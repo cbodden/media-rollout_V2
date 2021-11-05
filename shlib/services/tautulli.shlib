@@ -1,7 +1,12 @@
-function _tatulli_create()
+function _tatulli()
 {
-    local _API_TYPE=${1}
+    local _CALL_TYPE=${1}
 
+    _tautulli ${_CALL_TYPE}
+}
+
+function _tatulli_api()
+{
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
         if [ ! -d "${_CFG_PATH}/" ]
@@ -9,8 +14,10 @@ function _tatulli_create()
             mkdir ${_CFG_PATH}
         fi
     fi
+}
 
+function _tatulli_service()
+{
     cat ${_SVC_PATH}/tautulli.service \
         >> ${_CFG_PATH}/${_YML_FILE}
-
 }
