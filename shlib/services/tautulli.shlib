@@ -1,11 +1,11 @@
-function _tatulli()
+function _tautulli()
 {
     local _CALL_TYPE=${1}
 
     _tautulli ${_CALL_TYPE}
 }
 
-function _tatulli_api()
+function _tautulli_api()
 {
     if [ ! -e "${_CFG_PATH}/${_API_FILE}" ]
     then
@@ -16,7 +16,7 @@ function _tatulli_api()
     fi
 }
 
-function _tatulli_service()
+function _tautulli_service()
 {
     cat ${_SVC_PATH}/tautulli.service \
         >> ${_CFG_PATH}/${_YML_FILE}
