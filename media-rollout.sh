@@ -19,6 +19,12 @@ do
     source ${ITER}
 done
 
+for ITER in shlib/*.shlib
+do
+    source ${ITER}
+done
+
+
 clear
 
 ## option selection
