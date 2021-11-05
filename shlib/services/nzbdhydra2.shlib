@@ -40,6 +40,6 @@ function _nzbhydra2_api()
 
 function _nzbhydra2_service()
 {
-    cat ${_SVC_PATH}/nzbdhydra2.service \
+    cat ${_SVC_PATH}/nzbhydra2.service \
         >> ${_CFG_PATH}/${_YML_FILE}
 }
