@@ -29,9 +29,21 @@ function _menu()
             _pause
             _apt
             _docker_create darr
+            ## _header_create
+            ## _sabnzbd_create
+            ## _nzbhydra2_create
+            ## _radarr_create
+            ## _lidarr_create
+            ## _sonarr_create
+            ## _lazylibrarian_create
+            ## _ubooquity_create
+            ## _plex_create
+            ## _tautulli_create
+            ## _network.service"
             _docker init
             _docker stop
             _api
+            ## api gets removed when fnction creates get added
             _docker start
             exit 0
             ;;
