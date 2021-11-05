@@ -19,7 +19,7 @@ do
     source ${ITER}
 done
 
-for ITER in shlib/*.shlib
+for ITER in shlib/services/*.shlib
 do
     source ${ITER}
 done
