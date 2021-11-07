@@ -2,12 +2,12 @@ function _apt()
 {
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
 
-    add-apt-repository ppa:rmescandon/yq
+    add-apt-repository -y ppa:rmescandon/yq
 
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
         | apt-key add -
 
-    add-apt-repository \
+    add-apt-repository -y \
         "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 
     curl -L --fail \
